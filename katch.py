@@ -1,12 +1,10 @@
 import shutil
-import urllib
 import urllib.request
 import sys
 import getopt
 import subprocess
 import os
 from lxml import html
-import pprint
 
 def main(argv):
 
@@ -45,7 +43,7 @@ def main(argv):
 
 	ts_filenames = []
 	ts_filenames_string = '"concat:'
-	index = 290
+	index = 1
 	print ("\nStart downloading chunks...")
 
 	while True:
