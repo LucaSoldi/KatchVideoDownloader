@@ -8,7 +8,6 @@ from lxml import html
 
 def main(argv):
 
-	base_dir = os.path.dirname(os.path.realpath(__file__))
 	url = ''
 	outputfile = ''
 	try:
@@ -41,9 +40,7 @@ def main(argv):
 
 	url_chunks = head + "/chunk_"
 
-	ts_filenames = []
-	ts_filenames_string = '"concat:'
-	index = 1
+	index = 1	
 	print ("\nStart downloading chunks...")
 
 	while True:
@@ -54,17 +51,15 @@ def main(argv):
 		except:
 			break
 		
-		ts_filenames_string += os.path.join(base_dir, file_name) + "|"
 		index += 1
 		print (file_name)
-
-	ts_filenames_string = ts_filenames_string[:-1]
-	ts_filenames_string += '"'
+		with open("files_list.txt", "a") as file_list:
+			file_list.write("file '" + file_name + "'\n")
 
 	print ("**Download finished**\n")
 	print ("Start merging files...")
 
-	cmd = 'ffmpeg -y -i ' + ts_filenames_string + ' -bsf:a aac_adtstoasc -c copy ' + outputfile
+	cmd = 'ffmpeg  -y -f concat -i files_list.txt -bsf:a aac_adtstoasc -c copy ' + outputfile
 	p = subprocess.Popen(cmd, shell=True,stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
 	p.communicate()
 	
