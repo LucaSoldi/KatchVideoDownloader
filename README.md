@@ -5,7 +5,7 @@ The usage is very simple:
 
 > katch.py -i < katch_url > -o < output_file >
 
--i (--input): url of katch.me video (ex: https://katch.me/user/v/id-video-katch
+-i (--input): url of katch.me video (ex: https://katch.me/user/v/id-video-katch)
 
 -o (--output): name of output video saved in your folder (ex: output.mp4)
 
