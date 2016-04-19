@@ -3,7 +3,7 @@ Simple Python3 script to download video from katch.me
 
 The usage is very simple:
 
-> katch.py -i < katch_url > -o < output_file >
+> python3 katch.py -i < katch_url > -o < output_file >
 
 -i (--input): url of katch.me video (ex: https://katch.me/user/v/id-video-katch)
 
