@@ -30,7 +30,8 @@ def main(argv):
 	if shutil.which("ffmpeg") is None:
 		print("Error: ffmpeg not found")
 		return False
-
+	
+	open("files_list.txt", "w")
 	page = urllib.request.urlopen(url)
 	tree = html.fromstring(page.read())
 
@@ -69,6 +70,7 @@ def main(argv):
 	filelist = [ file for file in os.listdir(".") if file.startswith("chunk_") ]
 	for file in filelist:
 		os.remove(file)
+	os.remove("files_list.txt")
 
 	sys.exit(0)
 
